@@ -1,3 +1,19 @@
+# 1
+## slide-10 exercises
+
+implement function in SortArray class.
+implement algorithms as each function document string says.
+extract good methods and create class if you need.  
+list of functions:
+* selection sort
+* insertion sort
+* merge sort
+* binary search
+
+# 2
+implement this question with creating proper class and interfaces.
+inputs for this question is given to main method in App class
+
 برنامه‌ای بنویسید که ساختار یک ماشین جادویی و یک رشته را ورودی بگیرد، و سپس بگوید که ماشین جادویی چه بلایی سر رشته‌ی ورودی می‌آورد.
 
 ![pic](interface.png)
