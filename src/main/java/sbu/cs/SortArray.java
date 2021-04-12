@@ -4,7 +4,8 @@ public class SortArray {
 
     /**
      * sort array arr with selection sort algorithm
-     * @param arr array of integers
+     *
+     * @param arr  array of integers
      * @param size size of arrays
      * @return sorted array
      */
@@ -14,7 +15,8 @@ public class SortArray {
 
     /**
      * sort array arr with insertion sort algorithm
-     * @param arr array of integers
+     *
+     * @param arr  array of integers
      * @param size size of arrays
      * @return sorted array
      */
@@ -24,7 +26,8 @@ public class SortArray {
 
     /**
      * sort array arr with merge sort algorithm
-     * @param arr array of integers
+     *
+     * @param arr  array of integers
      * @param size size of arrays
      * @return sorted array
      */
@@ -35,7 +38,8 @@ public class SortArray {
     /**
      * return position of given value in array arr which is sorted in ascending order.
      * use binary search algorithm and implement it in iterative form
-     * @param arr sorted array
+     *
+     * @param arr   sorted array
      * @param value value to be find
      * @return position of value in arr. -1 if not exists
      */
@@ -46,7 +50,8 @@ public class SortArray {
     /**
      * return position of given value in array arr which is sorted in ascending order.
      * use binary search algorithm and implement it in recursive form
-     * @param arr sorted array
+     *
+     * @param arr   sorted array
      * @param value value to be find
      * @return position of value in arr. -1 if not exists
      */
