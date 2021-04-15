@@ -1,14 +1,10 @@
 package sbu.cs;
 
-public class SortArray {
+import java.util.LinkedList;
 
-    /**
-     * sort array arr with selection sort algorithm
-     *
-     * @param array  array of integers
-     * @param size size of arrays
-     * @return sorted array
-     */
+public class SortArray
+{
+
     public int[] selectionSort(int[] array, int size)
     {
         for (int i = 0; i < size; i++)
@@ -41,18 +37,52 @@ public class SortArray {
         return index;
     }
 
-
-
-    /**
-     * sort array arr with insertion sort algorithm
-     *
-     * @param arr  array of integers
-     * @param size size of arrays
-     * @return sorted array
-     */
-    public int[] insertionSort(int[] arr, int size) {
-        return null;
+    public int[] insertionSort(int[] arr, int size)
+    {
+        int endIndex = 1;
+        LinkedList<Integer> list = arrayToList(arr);
+        for (int i = 1; i < list.size(); i++)
+        {
+            int properLocation = properLocation(list,endIndex,list.get(i));
+            list.add(properLocation,list.get(i));
+            list.remove(i+1);
+            endIndex++;
+        }
+        return listToArray(list);
     }
+
+    private int properLocation(LinkedList<Integer> list,int endIndex,int indexElement)
+    {
+        for (int i = 0; i <= endIndex; i++)
+        {
+            if (indexElement < list.get(i))
+            {
+                return i;
+            }
+        }
+        return list.indexOf(indexElement);
+    }
+
+    private LinkedList<Integer> arrayToList(int[] array)
+    {
+        LinkedList<Integer> list = new LinkedList<>();
+        for (int i = 0; i < array.length; i++)
+        {
+            list.add(array[i]);
+        }
+        return list;
+    }
+
+    private int[] listToArray(LinkedList<Integer> list)
+    {
+        int[] array = new int[list.size()];
+        for (int i = 0; i < list.size(); i++)
+        {
+            array[i] = list.get(i);
+        }
+        return array;
+    }
+
 
     /**
      * sort array arr with merge sort algorithm
