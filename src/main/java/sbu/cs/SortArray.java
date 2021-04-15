@@ -5,13 +5,43 @@ public class SortArray {
     /**
      * sort array arr with selection sort algorithm
      *
-     * @param arr  array of integers
+     * @param array  array of integers
      * @param size size of arrays
      * @return sorted array
      */
-    public int[] selectionSort(int[] arr, int size) {
-        return null;
+    public int[] selectionSort(int[] array, int size)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            int indexOfLeastElement = indexOfLeastElement(array,i);
+            swap(array,indexOfLeastElement,i);
+        }
+        return array;
     }
+
+    private void swap(int[] array,int i,int j)
+    {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+
+    private int indexOfLeastElement(int[] array,int start)
+    {
+        int index = start;
+        int least = array[start];
+        for (int i = start; i < array.length; i++)
+        {
+            if (array[i] < least)
+            {
+                index = i;
+                least = array[i];
+            }
+        }
+        return index;
+    }
+
+
 
     /**
      * sort array arr with insertion sort algorithm
