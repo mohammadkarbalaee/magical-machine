@@ -137,7 +137,7 @@ public class SortArray
         int middle;
         while (leftIndex <= rightIndex)
         {
-            middle = leftIndex + (rightIndex - 1) / 2;
+            middle = leftIndex + (rightIndex - leftIndex) / 2;
             if (arr[middle] == value)
             {
                 return middle;
@@ -156,6 +156,29 @@ public class SortArray
 
     public int binarySearchRecursive(int[] arr, int value)
     {
+        int leftIndex = 0;
+        int rightIndex = arr.length - 1;
+        return binarySeachRecrsive(arr,leftIndex,rightIndex,value);
+    }
+
+    private int binarySeachRecrsive(int[] arr,int leftIndex,int rightIndex,int value)
+    {
+        if (leftIndex <= rightIndex)
+        {
+            int middle = leftIndex + (rightIndex - leftIndex) / 2;
+            if (arr[middle] == value)
+            {
+                return middle;
+            }
+            else if (arr[middle] > value)
+            {
+                return binarySeachRecrsive(arr,leftIndex,middle - 1,value);
+            }
+            else
+            {
+                return binarySeachRecrsive(arr,middle + 1,rightIndex,value);
+            }
+        }
         return -1;
     }
 }
