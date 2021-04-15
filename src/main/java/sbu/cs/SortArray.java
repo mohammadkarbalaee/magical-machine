@@ -130,27 +130,32 @@ public class SortArray
         System.arraycopy(temporaryArray,leftStart,array,leftStart,size + 1);
     }
 
-    /**
-     * return position of given value in array arr which is sorted in ascending order.
-     * use binary search algorithm and implement it in iterative form
-     *
-     * @param arr   sorted array
-     * @param value value to be find
-     * @return position of value in arr. -1 if not exists
-     */
-    public int binarySearch(int[] arr, int value) {
+    public int binarySearch(int[] arr, int value)
+    {
+        int leftIndex = 0;
+        int rightIndex = arr.length - 1;
+        int middle;
+        while (leftIndex <= rightIndex)
+        {
+            middle = leftIndex + (rightIndex - 1) / 2;
+            if (arr[middle] == value)
+            {
+                return middle;
+            }
+            else if (arr[middle] > value)
+            {
+                rightIndex = middle - 1;
+            }
+            else
+            {
+                leftIndex = middle + 1;
+            }
+        }
         return -1;
     }
 
-    /**
-     * return position of given value in array arr which is sorted in ascending order.
-     * use binary search algorithm and implement it in recursive form
-     *
-     * @param arr   sorted array
-     * @param value value to be find
-     * @return position of value in arr. -1 if not exists
-     */
-    public int binarySearchRecursive(int[] arr, int value) {
+    public int binarySearchRecursive(int[] arr, int value)
+    {
         return -1;
     }
 }
