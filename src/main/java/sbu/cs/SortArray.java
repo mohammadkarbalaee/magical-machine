@@ -1,5 +1,6 @@
 package sbu.cs;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class SortArray
@@ -83,16 +84,50 @@ public class SortArray
         return array;
     }
 
+    public int[] mergeSort(int[] arr, int size)
+    {
+        int[] temporaryArray = new int[size];
+        sort(arr,temporaryArray,0,size - 1);
+        return arr;
+    }
 
-    /**
-     * sort array arr with merge sort algorithm
-     *
-     * @param arr  array of integers
-     * @param size size of arrays
-     * @return sorted array
-     */
-    public int[] mergeSort(int[] arr, int size) {
-        return null;
+    private void sort(int[] array,int[] temporaryArray,int leftStart,int rightEnd)
+    {
+        if (leftStart >= rightEnd)
+        {
+            return;
+        }
+        int middle = (leftStart + rightEnd)/2;
+        sort(array,temporaryArray,leftStart, middle);
+        sort(array,temporaryArray,middle + 1,rightEnd);
+        merge(array,temporaryArray,leftStart,rightEnd);
+    }
+
+    private void merge(int[] array, int[] temporaryArray, int leftStart, int rightEnd)
+    {
+        int size = rightEnd - leftStart;
+        int leftEnd = (rightEnd + leftStart) / 2;
+        int rightStart = leftEnd + 1;
+        int leftPosition = leftStart;
+        int rightPosition = rightStart;
+        int index = leftStart;
+        while (leftPosition <= leftEnd && rightPosition<= rightEnd)
+        {
+            if (array[rightPosition] >= array[leftPosition])
+            {
+                temporaryArray[index] = array[leftPosition];
+                leftPosition++;
+            }
+            else
+            {
+                temporaryArray[index] = array[rightPosition];
+                rightPosition++;
+            }
+            index++;
+        }
+        System.arraycopy(array,leftPosition,temporaryArray,index,(leftEnd - leftPosition) + 1);
+        System.arraycopy(array,rightPosition,temporaryArray,index,(rightEnd - rightPosition) + 1);
+        System.arraycopy(temporaryArray,leftStart,array,leftStart,size + 1);
     }
 
     /**
