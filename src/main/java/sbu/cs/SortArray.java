@@ -40,48 +40,18 @@ public class SortArray
 
     public int[] insertionSort(int[] arr, int size)
     {
-        int endIndex = 1;
-        LinkedList<Integer> list = arrayToList(arr);
-        for (int i = 1; i < list.size(); i++)
+        int key;
+        int properLocation;
+        for (int i = 1; i < size; i++)
         {
-            int properLocation = properLocation(list,endIndex,list.get(i));
-            list.add(properLocation,list.get(i));
-            list.remove(i+1);
-            endIndex++;
-        }
-        return listToArray(list);
-    }
-
-    private int properLocation(LinkedList<Integer> list,int endIndex,int indexElement)
-    {
-        for (int i = 0; i <= endIndex; i++)
-        {
-            if (indexElement < list.get(i))
+            key = arr[i];
+            for (properLocation = i - 1;properLocation >= 0 && key < arr[properLocation];properLocation--)
             {
-                return i;
+                arr[properLocation + 1] = arr[properLocation];
             }
+            arr[properLocation + 1] = key;
         }
-        return list.indexOf(indexElement);
-    }
-
-    private LinkedList<Integer> arrayToList(int[] array)
-    {
-        LinkedList<Integer> list = new LinkedList<>();
-        for (int i = 0; i < array.length; i++)
-        {
-            list.add(array[i]);
-        }
-        return list;
-    }
-
-    private int[] listToArray(LinkedList<Integer> list)
-    {
-        int[] array = new int[list.size()];
-        for (int i = 0; i < list.size(); i++)
-        {
-            array[i] = list.get(i);
-        }
-        return array;
+        return arr;
     }
 
     public int[] mergeSort(int[] arr, int size)
