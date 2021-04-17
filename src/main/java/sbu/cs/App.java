@@ -1,7 +1,7 @@
 package sbu.cs;
 
-public class App {
-
+public class App
+{
     /**
      * use this function for magical machine question.
      *
