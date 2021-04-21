@@ -1,16 +1,22 @@
 package sbu.cs;
 
-public class YellowBlock
+public class YellowBlock extends Block
 {
-    private final String OUTPUT;
+    private String input;
+    private final BlackFunction BLACK_FUNCTION;
 
-    public YellowBlock(BlackFunction blackFunction,String input)
+    public YellowBlock(BlackFunction BLACK_FUNCTION)
     {
-        OUTPUT = blackFunction.function(input);
+        this.BLACK_FUNCTION = BLACK_FUNCTION;
     }
 
-    public String getOUTPUT()
+    public void setInput(String input)
     {
-        return OUTPUT;
+        this.input = input;
+    }
+
+    public String getOutput()
+    {
+        return BLACK_FUNCTION.function(input);
     }
 }

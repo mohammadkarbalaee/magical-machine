@@ -1,23 +1,36 @@
 package sbu.cs;
 
-public class BlueBlock
+public class BlueBlock extends Block
 {
-    private final String DOWN_OUTPUT;
-    private final String RIGHT_OUTPUT;
+    private String upInput;
+    private String downOutput;
+    private String leftInput;
+    private String rightOutput;
+    private final BlackFunction BLACK_FUNCTION;
 
-    public BlueBlock(BlackFunction blackFunction, String upInput, String leftInput)
+    public BlueBlock(BlackFunction BLACK_FUNCTION)
     {
-        DOWN_OUTPUT = blackFunction.function(upInput);
-        RIGHT_OUTPUT = blackFunction.function(leftInput);
+        this.BLACK_FUNCTION = BLACK_FUNCTION;
     }
 
-    public String getDOWN_OUTPUT()
+    public void setUpInput(String upInput)
     {
-        return DOWN_OUTPUT;
+        this.upInput = upInput;
     }
 
-    public String getRIGHT_OUTPUT()
+    public void setLeftInput(String leftInput)
     {
-        return RIGHT_OUTPUT;
+        this.leftInput = leftInput;
     }
+
+    public String getDownOutput()
+    {
+        return BLACK_FUNCTION.function(upInput);
+    }
+
+    public String getRightOutput()
+    {
+        return BLACK_FUNCTION.function(leftInput);
+    }
+
 }
