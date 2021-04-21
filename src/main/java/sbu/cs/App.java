@@ -7,6 +7,11 @@ public class App
     private int n;
     private String input;
 
+    public static void main(String[] args)
+    {
+        CharacterShift r = new CharacterShift();
+        System.out.println(r.function("abcdefgh"));
+    }
     public String main(int n, int[][] arr, String input)
     {
         blocks = new Block[n][n];

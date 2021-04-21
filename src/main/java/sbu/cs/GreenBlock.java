@@ -3,6 +3,7 @@ package sbu.cs;
 public class GreenBlock extends Block
 {
     private String input;
+    private String output;
     private final BlackFunction BLACK_FUNCTION;
 
     public GreenBlock(BlackFunction BLACK_FUNCTION)
@@ -17,6 +18,7 @@ public class GreenBlock extends Block
 
     public String getOutput()
     {
-        return BLACK_FUNCTION.function(input);
+        output = BLACK_FUNCTION.function(input);;
+        return output;
     }
 }

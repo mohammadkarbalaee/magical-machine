@@ -25,12 +25,14 @@ public class BlueBlock extends Block
 
     public String getDownOutput()
     {
-        return BLACK_FUNCTION.function(upInput);
+        downOutput = BLACK_FUNCTION.function(upInput);
+        return downOutput;
     }
 
     public String getRightOutput()
     {
-        return BLACK_FUNCTION.function(leftInput);
+        rightOutput = BLACK_FUNCTION.function(leftInput);
+        return rightOutput;
     }
 
 }

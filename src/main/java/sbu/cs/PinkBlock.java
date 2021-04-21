@@ -4,6 +4,7 @@ public class PinkBlock extends Block
 {
     private String input1;
     private String input2;
+    private String output;
     private final WhiteFunction WHITE_FUNCTION;
 
     public PinkBlock(WhiteFunction WHITE_FUNCTION)
@@ -23,6 +24,7 @@ public class PinkBlock extends Block
 
     public String getOutput()
     {
-        return WHITE_FUNCTION.function(input1,input2);
+        output = WHITE_FUNCTION.function(input1,input2);
+        return output;
     }
 }
