@@ -7,11 +7,6 @@ public class App
     private int n;
     private String input;
 
-    public static void main(String[] args)
-    {
-        CharacterShift r = new CharacterShift();
-        System.out.println(r.function("abcdefgh"));
-    }
     public String main(int n, int[][] arr, String input)
     {
         blocks = new Block[n][n];
@@ -26,17 +21,17 @@ public class App
 
     private String process()
     {
-        firstProcessor();
+        firstRowProcessor();
         middleRowsProcessor();
         return lastRowProcessor();
     }
 
     private String lastRowProcessor()
     {
-        ((PinkBlock) blocks[n - 1][1]).setInput2(((GreenBlock) blocks[0][0]).getOutput());
+        ((PinkBlock) blocks[n - 1][1]).setInput1(((YellowBlock) blocks[n - 1][0]).getOutput());
         for (int i = 1; i < n - 1; i++)
         {
-            ((PinkBlock)blocks[n - 1][i + 1]).setInput2(((PinkBlock)blocks[n - 1][i]).getOutput());
+            ((PinkBlock)blocks[n - 1][i + 1]).setInput1(((PinkBlock)blocks[n - 1][i]).getOutput());
         }
         return ((PinkBlock)blocks[n - 1][n - 1]).getOutput();
     }
@@ -58,7 +53,7 @@ public class App
             {
                 if (i == n - 2)
                 {
-                    ((PinkBlock) blocks[i + 1][j]).setInput1(((BlueBlock) blocks[i][j]).getDownOutput());
+                    ((PinkBlock) blocks[i + 1][j]).setInput2(((BlueBlock) blocks[i][j]).getDownOutput());
                 }
                 else
                 {
@@ -66,18 +61,18 @@ public class App
                 }
                 if (j == n - 2)
                 {
-                    ((PinkBlock) blocks[i][j + 1]).setInput2(((BlueBlock) blocks[i][j]).getDownOutput());
+                    ((PinkBlock) blocks[i][j + 1]).setInput1(((BlueBlock) blocks[i][j]).getRightOutput());
                 }
                 else
                 {
-                    ((BlueBlock) blocks[i][j + 1]).setUpInput(((BlueBlock) blocks[i][j]).getDownOutput());
+                    ((BlueBlock) blocks[i][j + 1]).setLeftInput(((BlueBlock) blocks[i][j]).getRightOutput());
                 }
             }
-            ((PinkBlock) blocks[i + 1][n - 1]).setInput1(((PinkBlock) blocks[i][n - 1]).getOutput());
+            ((PinkBlock) blocks[i + 1][n - 1]).setInput2(((PinkBlock) blocks[i][n - 1]).getOutput());
         }
     }
 
-    private void firstProcessor()
+    private void firstRowProcessor()
     {
         ((GreenBlock) blocks[0][0]).setInput(input);
         ((GreenBlock) blocks[1][0]).setInput(((GreenBlock) blocks[0][0]).getOutput());
@@ -94,7 +89,7 @@ public class App
                 ((GreenBlock) blocks[0][i + 1]).setInput(((GreenBlock) blocks[0][i]).getOutput());
             }
         }
-        ((PinkBlock) blocks[1][n - 1]).setInput1(((YellowBlock) blocks[0][n - 1]).getOutput());
+        ((PinkBlock) blocks[1][n - 1]).setInput2(((YellowBlock) blocks[0][n - 1]).getOutput());
     }
 
     private BlackFunction blackFunctionMaker(int functionNumber)
